@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/Recommencer.gd" type="Script" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Recommencer_sans_progression" type="Button" parent="."]
+margin_left = 132.0
+margin_top = 261.0
+margin_right = 364.0
+margin_bottom = 281.0
+text = "Recommencer sans la progression"
+script = ExtResource( 1 )
+
+[node name="Recommencer_avec_progression" type="Button" parent="."]
+margin_left = 134.0
+margin_top = 205.0
+margin_right = 366.0
+margin_bottom = 225.0
+text = "Recommencer avec la progression"
+
+[connection signal="pressed" from="Recommencer_sans_progression" to="Recommencer_sans_progression" method="_on_Recommencer_sans_progression_pressed"]
+[connection signal="pressed" from="Recommencer_avec_progression" to="Recommencer_sans_progression" method="_on_Recommencer_avec_progression_pressed"]

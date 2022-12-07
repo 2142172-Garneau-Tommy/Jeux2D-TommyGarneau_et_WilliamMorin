@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/dart.tres" type="Texture" id=1]
+[ext_resource path="res://scripts/Dart.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4.8125, 8 )
+
+[node name="Dart" type="Area2D" groups=["dart"]]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.1875, 0 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -8.56303e-07, 3.09981e-12 )
+rotation = -1.5708
+scale = Vector2( 0.0925975, 0.112237 )
+texture = ExtResource( 1 )
+
+[connection signal="area_shape_entered" from="." to="." method="_on_Dart_area_shape_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

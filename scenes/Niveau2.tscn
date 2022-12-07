@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/Dart.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Interface.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Arriere-plan2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Joueur.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/schéma3.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/Niveau2.gd" type="Script" id=6]
+[ext_resource path="res://scenes/schéma4.tscn" type="PackedScene" id=7]
+
+[node name="Niveau2" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="Arriere-plan2" parent="." instance=ExtResource( 3 )]
+
+[node name="Dart" parent="Arriere-plan2" instance=ExtResource( 1 )]
+position = Vector2( 226, 141 )
+
+[node name="Joueur" parent="Arriere-plan2" instance=ExtResource( 4 )]
+position = Vector2( 231, 181 )
+
+[node name="Control" parent="Arriere-plan2" instance=ExtResource( 2 )]
+
+[node name="Node2D" parent="Arriere-plan2" instance=ExtResource( 5 )]
+
+[node name="Node2D2" parent="Arriere-plan2" instance=ExtResource( 7 )]
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

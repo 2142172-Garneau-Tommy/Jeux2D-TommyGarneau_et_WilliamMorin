@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/jaune.tres" type="Texture" id=1]
+[ext_resource path="res://scripts/Ennemie.gd" type="Script" id=2]
+[ext_resource path="res://assets/vert.tres" type="Texture" id=3]
+[ext_resource path="res://assets/rouge.tres" type="Texture" id=4]
+[ext_resource path="res://assets/bleu.tres" type="Texture" id=5]
+[ext_resource path="res://assets/rose.tres" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "bleu",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "jaune",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "rose",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "rouge",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "vert",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16.5, 22.5 )
+
+[node name="Chemin" type="PathFollow2D"]
+rotate = false
+loop = false
+script = ExtResource( 2 )
+
+[node name="Ennemie" type="Area2D" parent="."]
+
+[node name="Balon" type="AnimatedSprite" parent="Ennemie"]
+scale = Vector2( 0.46, 0.459596 )
+frames = SubResource( 1 )
+animation = "rose"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ennemie"]
+position = Vector2( 0.5, 0.5 )
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="Ennemie" to="." method="_on_Ennemie_area_entered"]
